@@ -5,7 +5,9 @@ const csv = require('csv-parser');
 const fs = require('fs');
 const User = require('../models/User');
 
-const upload = multer({ dest: 'uploads/' });
+const os = require('os');
+
+const upload = multer({ dest: os.tmpdir() });
 
 // POST /users/import
 router.post('/import', upload.single('file'), (req, res) => {
