@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 
 // Database Connection
 console.log('Connecting to MongoDB...');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/user_import_db')
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
