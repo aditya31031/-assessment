@@ -17,7 +17,7 @@ function App() {
   const fetchUsers = async (page = 1, searchQuery = search, sortColumn = sortBy, sortDir = sortOrder) => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5000/users`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/users`, {
         params: {
           page,
           limit: 10,
@@ -58,7 +58,7 @@ function App() {
     if (window.confirm('Are you sure you want to delete ALL data? This cannot be undone.')) {
       setLoading(true);
       try {
-        await axios.delete('http://localhost:5000/users');
+        await axios.delete(`${import.meta.env.VITE_API_URL}/users`);
         fetchUsers(1);
       } catch (error) {
         console.error('Error clearing data:', error);

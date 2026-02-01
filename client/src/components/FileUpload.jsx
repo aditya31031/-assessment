@@ -55,7 +55,7 @@ const FileUpload = ({ onUploadSuccess }) => {
             clearInterval(progressInterval);
 
             // Now do the actual upload
-            const res = await axios.post('http://localhost:5000/users/import', formData, {
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/users/import`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
