@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const User = require('./models/User');
 require('dotenv').config();
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/user_import_db')
+mongoose.connect(process.env.MONGODB_URI)
     .then(async () => {
         console.log('Connected. Cleaning up empty users...');
         // Find users that have no fields other than _id and __v
