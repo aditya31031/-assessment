@@ -18,13 +18,23 @@ app.use((req, res, next) => {
 });
 
 // Database Connection
+// Check for MONGODB_URI
+if (!process.env.MONGODB_URI) {
+    console.error('FATAL ERROR: MONGODB_URI is not defined.');
+}
+
+// Database Connection
 console.log('Connecting to MongoDB...');
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
 // Routes
-// Routes
+// Health check route
+app.get('/', (req, res) => {
+    res.send('Server is running');
+});
+
 app.use('/users', userRoutes);
 
 // Export the app for Vercel (serverless)
