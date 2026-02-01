@@ -10,7 +10,7 @@ async function testUpload() {
 
     try {
         console.log('Uploading file...');
-        const res = await axios.post('http://localhost:5000/users/import', form, {
+        const res = await axios.post('https://assessment-5xpn.onrender.com/import', form, {
             headers: {
                 ...form.getHeaders()
             }
@@ -19,7 +19,7 @@ async function testUpload() {
         console.log('Upload Response:', res.data);
 
         // Now fetch users
-        const getRes = await axios.get('http://localhost:5000/users');
+        const getRes = await axios.get('https://assessment-5xpn.onrender.com/users');
         console.log('Users found:', getRes.data.users.length);
         if (getRes.data.users.length > 0) {
             console.log('Last User Keys:', Object.keys(getRes.data.users[getRes.data.users.length - 1]));
